@@ -45,3 +45,8 @@ When you installed Git and cloned the remote repository in week 1, you should ha
 1. Go to http://localhost:5500 in a browser tab. Nothing should be visible as the server has not been setup to repond to that route.
 2. Add "/filename.html" to the end of the URL (replacing filename with the name of the file you moved to the public folder).
 3. You should see that page in the browser.
+
+
+postgresql://cse340rl:bkf5TBLbiaE2DV4lP15TrDIHwIVUexNC@dpg-cskoiabv2p9s73a91e60-a/cse340rl_yqzg
+
+postgresql://cse340database:V5FXBsA2kXRpSuzBZ5Tz1eaQlCDgO38X@dpg-css47s9u0jms73e5ohvg-a.oregon-postgres.render.com/cse340database_zzfy
