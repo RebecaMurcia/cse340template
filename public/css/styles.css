@@ -4,6 +4,7 @@
   --secondary-color:#3a3a3a;
   --accent-color1-:#4089c8;
   --accent-color2-:rgba(197, 234, 250, 0.668);
+  --accent-color3-:#d3e3f091;
 
  }
 /******* Change Box Model ***************/
@@ -207,7 +208,7 @@ figure figcaption {
 }
  
 #inv-display li{
-  background-color: var(--accent-color2-);
+  background-color: var(--accent-color3-);
   border-radius: 10px;
   list-style: none;
   padding: 10px;
