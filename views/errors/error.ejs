@@ -1,9 +1,7 @@
-<%# Heading %>
-<% if (title) { %>
-    <h1><%= title %></h1>
-    <% } else {
-      res.redirect('/')
-    } %>
-
-    <%- message %>
+<%# Error page %>
+    <div class="error-display">
+      <h1><%- title %></h1>
+      <p><%- message %></p>
+      <img src="/images/site/broken.webp" alt="error">
+  </div>
 

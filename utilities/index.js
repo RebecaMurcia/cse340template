@@ -57,6 +57,36 @@ Util.buildClassificationGrid = async function(data){
   return grid
 }
 
+/* **************************************
+* Build the item view
+* ************************************ */
+Util.buildItemGrid = async function(data){
+  let grid
+  if(data.length > 0) {
+      grid = '<div id="item-display">'
+      data.forEach(item => {
+        grid += `<div id="item_image">
+        <img src="${item.inv_image}" alt="big image of the vehicle">
+        </div>
+          <div id="item-description">
+          <h2><b>Make:</b> ${item.inv_make}</h2>
+          <h2><b>Model:</b> ${item.inv_model}</h2>
+          <p><b>Year:</b> ${item.inv_year}</p>
+          <p class="green"><b>Price:</b> $${new Intl.NumberFormat('en-US').format(item.inv_price)}</p>
+          <p><b>Color:</b> ${item.inv_color}</p>
+          <p><b>Mileage:</b> ${new Intl.NumberFormat('en-US').format(item.inv_miles)}</p>
+          <p class="box"><b>Description:</b><br> ${item.inv_description}</p>
+        </div>`
+      })
+      grid += '</div>'
+  }
+  else {
+      grid = '<p class="notice">Sorry, no matching vehicle could be found.</p>'
+  }
+  console.log(grid)
+  return grid
+}
+
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for 

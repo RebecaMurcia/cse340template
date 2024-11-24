@@ -12,6 +12,7 @@ const app = express()
 const static = require("./routes/static")
 const baseController = require("./controllers/baseController")
 const inventoryRoute = require("./routes/inventoryRoute")
+const intentionalErrorRoute = require("./routes/intentionalErrorRoute.js");
 const utilities = require("./utilities/")
 
 
@@ -31,7 +32,11 @@ app.use(static)
 app.get("/", utilities.handleErrors(baseController.buildHome))
 
 //Inventory routes
+console.log('inventory');
 app.use("/inv", inventoryRoute)
+
+// Intentional error route. Used for testing
+app.use("/intentError", intentionalErrorRoute);
 
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
@@ -48,7 +53,7 @@ app.use(async (err, req, res, next) => {
   if (err.status == 404) {
     message = err.message
   } else {
-    message = "Oh no! There was a crash. Maybe try a different route?"
+    message = "Yikes! The site is broken."
   }
   res.render("errors/error", {
     title: err.status || 'Server Error',
