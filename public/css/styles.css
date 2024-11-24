@@ -109,7 +109,7 @@ div #item-display {
 #item_image img{
   width: 20em;
   height: auto;
-  margin-left: 20px 0px;
+  margin-left: 20px;
 }
 #item-description p.green{
   background-color: rgb(13, 110, 13);
@@ -377,7 +377,7 @@ div #item-description{
 #item_image img{
   width: 40em;
   height: auto;
-  margin-left: 20px 0px;
+  margin-left: 20px;
 }
  
 /*error page */
