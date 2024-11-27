@@ -4,6 +4,7 @@
         res.redirect('/')
     } %>
 
+<%- messages()%>
     
     <form class="account" action="/account/login" method="post">
             <p>**All fields are required</p>
@@ -18,5 +19,5 @@
             <span class="reveal-button active" id="passwordHide">Show password</span>
             </div>
             <button type="submit">Login</button>
-            <p>No account? <a href="/account/register">Sign-up</a></p>
+            <p>No account? <a href="/account/register">Register Here</a></p>
     </form> 
