@@ -5,12 +5,20 @@
     } %>
 
 <%- messages()%>
+
+<% if (errors) { %>
+    <ul class="notice">
+   <% errors.array().forEach(error => { %>
+     <li><%= error.msg %></li>
+  <%  }) %>
+   </ul>
+  <% } %>
     
     <form class="account" action="/account/login" method="post">
             <p>**All fields are required</p>
             <div class="input-control">
             <label for="email">Email:</label>
-            <input type="email" id="email" name="account_email" placeholder="john@email.com" value="<%= locals.account_email %>" required >
+            <input type="email" id="email" name="account_email" placeholder="john@email.com" required value="<%= locals.account_email %>" >
             </div>
             <div class="input-control">
             <label for="password">Password:</label>
@@ -21,3 +29,19 @@
             <button type="submit">Login</button>
             <p>No account? <a href="/account/register">Register Here</a></p>
     </form> 
+
+   <!-- Script to handle hiding and revealing password field -->
+<script>
+    const passwordInput = document.querySelector("#password");
+    const passwordHide = document.querySelector("#passwordHide");
+    passwordHide.addEventListener("click", () => {
+        if(passwordInput.getAttribute("type") == "password" ) {
+            passwordInput.setAttribute("type", "text");
+            passwordHide.classList.remove("active");
+        }
+        else {
+            passwordInput.setAttribute("type", "password");
+            passwordHide.classList.add("active");
+        }
+    })
+ </script>
