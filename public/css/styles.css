@@ -188,6 +188,11 @@ fieldset{
   margin-bottom: 15px;
 }
 
+div.input-control #classification{
+  background-color:rgba(197, 234, 250, 0.463);
+  height:5px;
+
+}
 .small{
   font-size: 12px;
   padding-bottom: 10px;
