@@ -22,7 +22,18 @@ router.post(
     "/add-classification",
     dataValidate.classificationRules(),
     dataValidate.checkClassData,
-    utilities.handleErrors(invController.addClassificationName))
+    utilities.handleErrors(invController.addClassificationName));
+
+//Route to build add-inventory view
+router.get("/add-inventory", utilities.handleErrors(invController.buildAddInv));
+
+//Process ADD NEW INVENTORY data
+router.post(
+    "/add-inventory",
+    dataValidate.inventoryRules(),
+    dataValidate.checkInvData,
+    utilities.handleErrors(invController.addInvData)
+);
 
 module.exports = router;
 

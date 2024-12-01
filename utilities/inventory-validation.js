@@ -36,4 +36,120 @@ const utilities = require(".")
     next()
 }
 
+ /* *********************
+ ADD NEW INVENTORY server validation rules
+ ******************** */
+ validate.inventoryRules = () => {
+    return [
+        body("classification_id")
+        .trim()
+        .escape()
+        .notEmpty()
+        .isLength({min: 1 })
+        .isInt()
+        .withMessage("Please select a classification."),
+       
+
+        body("inv_make")
+        .trim()
+        .escape()
+        .notEmpty()
+        .withMessage("Make value is missing")
+        .isLength({min:1})
+        .withMessage("Please add a valid make."),
+        
+
+        body("inv_model")
+        .trim()
+        .escape()
+        .notEmpty()
+        .withMessage("Model value is missing")
+        .isLength({min: 1})
+        .withMessage("Please add a valid model."),
+
+        body("inv_description")
+        .trim()
+        .escape()
+        .notEmpty()
+        .isLength({min: 1})
+        .withMessage("Please write a description."),
+
+        body("inv_image")
+        .trim()
+        .escape()
+        .notEmpty()
+        .isLength({min: 1})
+        .withMessage("Please add an image."),
+        
+
+        body("inv_thumbnail")
+        .trim()
+        .escape()
+        .notEmpty()
+        .isLength({min: 1})
+        .withMessage("Please add a thumbnail."),
+        
+
+        body("inv_price")
+        .trim()
+        .escape()
+        .notEmpty()
+        .withMessage("Price value is missing.")
+        .isNumeric()
+        .withMessage("Price must be a number."),
+
+        body("inv_year")
+        .trim()
+        .escape()
+        .notEmpty()
+        .withMessage("Year value missing.")
+        .isNumeric()
+        .withMessage("Year must be a number."),
+
+        body("inv_miles")
+        .trim()
+        .escape()
+        .notEmpty()
+        .withMessage("Price value is missing.")
+        .isNumeric()
+        .withMessage("Miles must be a number."),
+
+        body("inv_color")
+        .trim()
+        .escape()
+        .notEmpty()
+        .isLength({min: 1})
+        .withMessage("Please add a color."),
+    ]
+}
+
+/* ***********************
+Check data and return errors or continue adding inventory items
+************************ */
+validate.checkInvData = async (req, res, next) => {
+    const { classification_id, inv_make, inv_model, inv_description, inv_image, inv_thumbnail, inv_price, inv_year, inv_miles, inv_color } = req.body
+    let errors = []
+    errors = validationResult(req)
+    if (!errors.isEmpty()) {
+        let nav = await utilities.getNav()
+        res.render("inventory/add-inventory", {
+            errors,
+            title: "Add New Vehicle",
+            nav,
+            classification_id,
+            inv_make,
+            inv_model,
+            inv_description,
+            inv_image,
+            inv_thumbnail,
+            inv_price,
+            inv_year,
+            inv_miles,
+            inv_color,
+        })
+        return
+    }
+    next()
+}
+
 module.exports = validate 
