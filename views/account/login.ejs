@@ -17,11 +17,11 @@
     <form class="account" action="/account/login" method="post">
             <p>**All fields are required</p>
             <div class="input-control">
-            <label for="email">Email:</label>
+            <label>Email:</label>
             <input type="email" id="email" name="account_email" placeholder="john@email.com" required value="<%= locals.account_email %>" >
             </div>
             <div class="input-control">
-            <label for="password">Password:</label>
+            <label>Password:</label>
             <input type="password" id="password" name="account_password" required
             pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
             <span class="reveal-button active" id="passwordHide">Show password</span>
