@@ -228,6 +228,12 @@ input:required:invalid, input:focus:invalid{
   padding-bottom: 15px;
 }
 
+/* vehicle management links */
+div.link{
+  margin-left: 30px;
+  padding: 20px;
+}
+
 /*
 Footer styles
 */
