@@ -32,9 +32,9 @@
     </div>
 
     <div class="input-control">
-    <label for="description">Description</label>
+    <label>Description</label>
     <textarea rows="5" cols="10" name="inv_description" id="description"
-    value="<%= locals.inv_description %>" required></textarea>
+     required></textarea>
    </div>
 
    <div class="input-control">
@@ -54,7 +54,7 @@
         <label for="price">Price</label>
         <div class="small"><i>decimal or integer</i></div>
         <input type="text" id="price" name="inv_price" 
-        required pattern="^\d+(\.\d{2})?$" value="<%= locals.inv_price %>">
+        pattern="^\d+(\.\d{2})?$" value="<%= locals.inv_price %>" required >
     </div>
 
     <div class="input-control">
