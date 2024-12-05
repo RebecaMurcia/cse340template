@@ -24,9 +24,14 @@ router.post(
   "/login",
   regValidate.loginRules(),
   regValidate.checkLoginData,
-  (req, res) => {
-    res.status(200).send('login process')
-  }
-)
+  utilities.handleErrors(accountController.accountLogin)
+);
+
+//default route to admin/management account
+router.get("/", 
+utilities.checkLogin, 
+utilities.handleErrors(accountController.buildAccountMgmt))
+
+
 
 module.exports = router;
