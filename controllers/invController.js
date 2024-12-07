@@ -182,6 +182,101 @@ invCont.getInventoryJSON = async (req, res, next) => {
     next(new Error("No data returned"))
   }
 }
+
+/* ***************************
+ *  Build vehicle edit form view
+ * ************************** */
+invCont.editVehicleForm = async function (req, res, next) {
+  const inv_id = parseInt(req.params.itemId)
+  let nav = await utilities.getNav()
+  const itemData = await invModel.getItemById(inv_id)
+  //create a title for the page
+  const itemMake = itemData[0].inv_make
+  const itemModel = itemData[0].inv_model
+  
+  let classificationDropdown = await utilities.buildClassificationList(itemData[0].classification_id)
+  //render page
+  res.render("inventory/edit-inventory", {
+    title: `Edit ${itemMake} ${itemModel}`,
+    nav,
+    classificationDropdown: classificationDropdown,
+    errors: null,
+    inv_id: itemData[0].inv_id,
+    inv_make: itemData[0].inv_make,
+    inv_model: itemData[0].inv_model,
+    inv_year: itemData[0].inv_year,
+    inv_description: itemData[0].inv_description,
+    inv_image: itemData[0].inv_image,
+    inv_thumbnail: itemData[0].inv_thumbnail,
+    inv_price: itemData[0].inv_price,
+    inv_miles: itemData[0].inv_miles,
+    inv_color: itemData[0].inv_color,
+    classification_id: itemData[0].classification_id
+  })
+}
+
+/* ******************
+EDIT/UPDATE INVENTORY data
+******************** */
+invCont.updateInventory = async function (req, res) {
+  let nav = await utilities.getNav();
+  const { 
+    inv_id,
+    inv_make,
+    inv_model, 
+    inv_description, 
+    inv_image, 
+    inv_thumbnail, 
+    inv_price, 
+    inv_year, 
+    inv_miles, 
+    inv_color,
+    classification_id  
+  } = req.body
+  
+  const updateResult = await invModel.updateInventory(
+    inv_id,
+    inv_make,
+    inv_model,
+    inv_description,
+    inv_image,
+    inv_thumbnail,
+    inv_price,
+    inv_year,
+    inv_miles,
+    inv_color,
+    classification_id
+  )
+
+  if (updateResult) {
+    const itemName = updateResult.inv_make + " " + updateResult.inv_model
+    req.flash (
+      "notice",
+      `${itemName} was successfully updated.`)
+      res.redirect("/inv/")
+  } else {
+    let classificationDropdown = await utilities.buildClassificationList(classification_id)
+    const itemName = `${inv_make} ${inv_model}`
+    req.flash("notice","Sorry, the insert failed.")
+    return res.status(501).render("inventory/edit-inventory", {
+      title: "Edit" + itemName,
+      nav,
+      classificationDropdown,
+      errors: null,
+      inv_id,
+      inv_make,
+      inv_model,
+      inv_description,
+      inv_image,
+      inv_thumbnail,
+      inv_price,
+      inv_year,
+      inv_miles,
+      inv_color,
+      classification_id
+    });
+  }
+}
 module.exports = invCont
 
 
