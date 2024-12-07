@@ -41,8 +41,7 @@
     <div class="input-control">
     <label for="description">Description</label>
     <textarea rows="5" cols="10" name="inv_description" id="description" 
-    <% if(locals.inv_description) { %> value="<%= locals.inv_description %>"
-    <% } %> required></textarea>
+    <%- locals.inv_description %> required></textarea>
    </div>
 
    <div class="input-control">
