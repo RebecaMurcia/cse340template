@@ -20,9 +20,9 @@ router.get("/add-classification", utilities.handleErrors(invController.buildAddC
 //Process the add-classification data
 router.post(
     "/add-classification",
-    dataValidate.classificationRules(),
-    dataValidate.checkClassData,
-    utilities.handleErrors(invController.addClassificationName));
+dataValidate.classificationRules(),
+dataValidate.checkClassData,
+utilities.handleErrors(invController.addClassificationName));
 
 //Route to build add-inventory view
 router.get("/add-inventory", utilities.handleErrors(invController.buildAddInv));
@@ -30,9 +30,9 @@ router.get("/add-inventory", utilities.handleErrors(invController.buildAddInv));
 //Process ADD NEW INVENTORY data
 router.post(
     "/add-inventory",
-    dataValidate.inventoryRules(),
-    dataValidate.checkInvData,
-    utilities.handleErrors(invController.addInvData)
+dataValidate.inventoryRules(),    
+dataValidate.checkInvData,
+utilities.handleErrors(invController.addInvData)
 );
 
 //Router to get vehicles/cars for management view to update and delete
@@ -44,9 +44,14 @@ router.get("/edit/:itemId", utilities.handleErrors(invController.editVehicleForm
 
 //Route to handle incoming request to edit vehicle/inventory form
 router.post("/update/", 
-    dataValidate.inventoryRules(),
-    dataValidate.checkUpdateData,
-    utilities.handleErrors(invController.updateInventory));
+dataValidate.inventoryRules(),
+dataValidate.checkUpdateData,
+utilities.handleErrors(invController.updateInventory));
+
+//Route to delete vehicle/inventory form
+router.get("/delete/:itemId", utilities.handleErrors(invController.deleteInvConfirmation));
+router.post("/delete/", 
+utilities.handleErrors(invController.deleteInventory));
 
 module.exports = router;
 
