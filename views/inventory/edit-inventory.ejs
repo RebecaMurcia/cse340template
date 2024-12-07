@@ -33,7 +33,7 @@
     <div class="input-control">
     <label for="model">Model</label>
     <input type="text" id="model" name="inv_model" 
-    placeholder="Min of 3 characters"  pattern="^([a-zA-Z]){3}$" 
+    placeholder="Min of 3 characters" min="1900" max="2030" pattern="^([a-zA-Z]){3}$" 
     <% if(locals.inv_model) { %> value="<%= locals.inv_model %>"
     <% } %> required >
     </div>

@@ -47,7 +47,7 @@
         <label for="year">Year</label>
         <div class="small"><i>4-digit year</i></div>
         <input type="text" id="year" name="inv_year" 
-        required readonly pattern="^\d{4}$"  <% if(locals.inv_year) { %> value="<%= locals.inv_year %>"
+        required readonly min="1900" max="2030" pattern="^\d{4}$"  <% if(locals.inv_year) { %> value="<%= locals.inv_year %>"
         <% } %>>
     </div>
 

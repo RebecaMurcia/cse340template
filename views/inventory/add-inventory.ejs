@@ -62,7 +62,7 @@
         <label for="year">Year</label>
         <div class="small"><i>4-digit year</i></div>
         <input type="text" id="year" name="inv_year" 
-        required pattern="^\d{4}$" value="<%= locals.inv_year %>">
+        required pattern="^\d{4}$" min="1900" max="2030" value="<%= locals.inv_year %>">
     </div>
 
     <div class="input-control">
