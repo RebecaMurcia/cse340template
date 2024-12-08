@@ -18,13 +18,14 @@
 <form class="account" action="/inv/delete" method="post"> 
     <h2>Please confirm Deletion</h2>
     <p>Note: The delete is permanent.</p>
-   
+
+
    <div class="input-control">
     <label for="make">Make</label>
     <input type="text" id="make" name="inv_make" placeholder="Min of 3 characters" 
-     pattern="^([a-zA-Z]){3}$"  readonly
-     required <% if(locals.inv_make) { %> value="<%= locals.inv_make %>"
-     <% } %>>
+     pattern="^([a-zA-Z]){3}$"  
+    <% if(locals.inv_make) { %> value="<%= locals.inv_make %>"
+     <% } %> required readonly>
    </div> 
 
     <div class="input-control">

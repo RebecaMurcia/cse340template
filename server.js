@@ -48,6 +48,12 @@ app.use(function(req, res, next){
   next()
 })
 
+//Unit 5 Login activity
+app.use(cookieParser())
+
+//middleware for JWT
+app.use(utilities.checkJWTToken)
+
 /* ***********************
  * View Engine and Templates
  *************************/
