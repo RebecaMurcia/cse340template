@@ -167,7 +167,7 @@ async function deleteInvItems (
     console.error("model error:" + error)
   }
 }
-
+ 
 module.exports = {getClassifications, getInventoryByClassificationId, getItemById,
   addClassificationName, addInvData,updateInventory, deleteInvItems
 }

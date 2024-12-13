@@ -140,7 +140,5 @@ async function getAccountList() {
     return new Error("Failed to get account list");
   }
 }
-
-  
 module.exports = { registerAccount,checkExistingEmail, getAccountByEmail, getAccountById, updateAccount, updatePassword, getAccountList }
 
