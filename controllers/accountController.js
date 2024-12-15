@@ -4,6 +4,7 @@ const accountModel = require('../models/account-model')
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 require("dotenv").config()
+const messagesModel =require("../models/messages-model")
 
 /* ****************************************
 *  Deliver login view
@@ -127,15 +128,18 @@ async function accountLogin(req, res) {
 }
 
   /* ****************************************
-*  Deliver registration view
+*  Deliver Management/admin view
 * *************************************** */
-async function buildAccountMgmt(req, res, next) {
+async function buildAccountMgmt(req, res) {
   let nav = await utilities.getNav()
+  const unread = await messagesModel.getMessageCountById(res.locals.accountData.account_id)
   res.render("account/admin", {
-    title:"New Account",
+    title:"Account Management",
     nav,
     errors: null,
+    unread,
   })
+  return;
 }
 
 /* ****************************************

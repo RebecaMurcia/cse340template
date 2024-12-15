@@ -1,0 +1,25 @@
+<h1><%- title %></h1>
+<%- messages() %>
+<% if (errors) { %>
+<ul class="notice">
+    <% errors.array().forEach(error => { %>
+    <li><%= error.msg %></li>
+    <%  }) %>
+</ul>
+<% } %>
+
+<form class="account" action="/message/send" method="post">
+    <div class="input-control">
+        <label>Recipient</label>
+        <%- recipientList %>
+    </div>
+    <div class="input-control">
+        <label>Subject</label>
+        <input  type="text" name="message_subject" required value="<%- locals.Subject %>">
+    </div>
+    <div class="input-control">
+        <label>Message</label>
+        <textarea  name="message_body" rows="7" required><%- locals.Body %></textarea>
+    </div> 
+    <button type="submit">Send</button>
+</form>

@@ -1,11 +1,5 @@
-<% if (title) { %>
-    <h1><%- title %></h1>
-    <%} else {
-        res.redirect('/')
-    } %>
-
-<%- messages()%>
-
+<h1><%- title %></h1>
+<%- messages() %>
 <% if (errors) { %>
     <ul class="notice">
    <% errors.array().forEach(error => { %>
@@ -13,7 +7,7 @@
   <%  }) %>
    </ul>
   <% } %>
-  
+
   <% if(locals.accountData.account_type == "Client") { %>
     <h2>Welcome <%- locals.accountData.account_firstname %></h2>
     <p><a href="/account/update/<%- locals.accountData.account_id %>">Update account information</a></p>
@@ -23,3 +17,17 @@
     <h3>Inventory Management</h3>
     <p><a href="/inv/">Manage Inventory</a></p>
   <% } %>
+
+  <% if(locals.loggedin) { %>
+    <div class="account">
+    <h2>Messaging Center</h2>
+    <ul>
+      <li><p>You have <%- unread %> new messages</p></li>
+      <li><p>Go to <a class="button" href="/message">inbox</a></p></li>
+    </ul>
+  </div>
+  
+  
+  <% } %>
+  
+  <h3>You're logged in</h3>

@@ -15,6 +15,7 @@ const inventoryRoute = require("./routes/inventoryRoute")
 const intentionalErrorRoute = require("./routes/intentionalErrorRoute.js")
 const accountRoute = require("./routes/accountRoute")
 const utilities = require("./utilities/")
+const messagesRoute = require('./routes/messagesRoute.js');
 const session = require("express-session")
 const pool = require('./database/')
 const bodyParser = require("body-parser")
@@ -78,6 +79,9 @@ app.use("/account", accountRoute)
 
 // Intentional error route. Used for testing
 app.use("/intentError", intentionalErrorRoute);
+
+// Message routes
+app.use("/message", messagesRoute);
 
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
